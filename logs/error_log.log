@@ -1,0 +1,24 @@
+Section@ 2024-02-15 15:04:37  Array
+(
+    [Line] => 161
+    [Code] => 0
+    [File] => /home/vagrant/mobelinn/Models/account.php
+    [Message] => SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'customer_id' cannot be null
+    [Trace] => #0 /home/vagrant/mobelinn/Controllers/account.php(228): accountModel->Get_Last_Code_Forgot()
+#1 /home/vagrant/mobelinn/App/Bootstrap.php(38): accountController->forgot()
+#2 /home/vagrant/mobelinn/index.php(81): Bootstrap::run()
+#3 {main}
+)
+
+Section@ 2024-02-15 15:06:09  Array
+(
+    [Line] => 159
+    [Code] => 0
+    [File] => /home/vagrant/mobelinn/Models/account.php
+    [Message] => SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'customer_id' cannot be null
+    [Trace] => #0 /home/vagrant/mobelinn/Controllers/account.php(228): accountModel->Get_Last_Code_Forgot()
+#1 /home/vagrant/mobelinn/App/Bootstrap.php(38): accountController->forgot()
+#2 /home/vagrant/mobelinn/index.php(81): Bootstrap::run()
+#3 {main}
+)
+
