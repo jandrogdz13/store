@@ -1,0 +1,11 @@
+# ignore all logs
+*.log
+
+/App/Config.php
+tmp/
+logs/
+Storage/
+/README.md
+/.editorconfig
+/.htaccess
+App/Config.php
