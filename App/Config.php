@@ -51,6 +51,3 @@ define('MP_TOKEN_PRODUCTION', 'TEST-3360386434857592-020415-dd41beed7aac310ca554
 
 // Currency openexchangerates.org
 define('CURRENCY_CONVERT_ID', '3f28bccad1984a80a67a3471b75a7b21');
-
-
-?>

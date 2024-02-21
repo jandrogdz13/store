@@ -30,6 +30,7 @@ class productModel extends Model{
 					IFNULL(SUM(IF(store_inventory.action = 'INGRESO', store_inventory.quantity, 0)), 0) AS entries,
 					IFNULL(SUM(IF(store_inventory.action = 'SALIDA', store_inventory.quantity, 0)), 0) AS sales
 				FROM store_inventory
+				GROUP BY store_inventory.product_id
 			)
 			SELECT
 				store_product.product_id,
@@ -101,6 +102,7 @@ class productModel extends Model{
 					IFNULL(SUM(IF(store_inventory.action = 'SALIDA', store_inventory.quantity, 0)), 0) AS sales
 				FROM store_inventory
 				WHERE store_inventory.product_id = :product_id
+				GROUP BY store_inventory.product_id
 			)
 			SELECT
 				store_product.product_id,

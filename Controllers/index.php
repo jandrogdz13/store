@@ -14,6 +14,7 @@ class indexController extends mainController {
 		$products = $product_model->Get_Records();
 
 		$this->viewer->assign('products', $products);
+		$this->viewer->assign('hot_sale', $products);
 		$this->viewer->view(__FUNCTION__);
 	}
 
