@@ -76,7 +76,10 @@ function get_conversion_rate(): string{
 	$current_date = getCurrentDate();
 
 	$sql = "
-			SELECT *
+			SELECT 
+				conversion_rate.id,
+				conversion_rate.conversion,
+				DATE_FORMAT(FROM_UNIXTIME(conversion_rate.timestamp_api), '%Y-%m-%d') AS timestamp_api
 			FROM conversion_rate
 			WHERE DATE_FORMAT(FROM_UNIXTIME(conversion_rate.timestamp_api), '%Y-%m-%d') = :current_date
 		";
@@ -84,6 +87,8 @@ function get_conversion_rate(): string{
 		'current_date' => $current_date
 	]);
 	$record = $db->fetch();
+
+	//debug([$current_date, date('Y-m-d', strtotime($current_date))], true);
 
 	if(!$record):
 		try{
@@ -101,20 +106,18 @@ function get_conversion_rate(): string{
 			$conversion_rate = $body['rates']['MXN'];
 
 			$sql = "
-			INSERT INTO conversion_rate
-			SET
-				conversion_rate.conversion = :conversion_rate,
-				conversion_rate.timestamp_api = :timestamp
-		";
+				INSERT INTO conversion_rate
+				SET
+					conversion_rate.conversion = :conversion_rate,
+					conversion_rate.timestamp_api = :timestamp
+			";
 			$db->query($sql, [
 				'conversion_rate' => $conversion_rate,
-				'timestamp' => $body['timestamp']
+				'timestamp' => strtotime($current_date),
 			]);
 		}catch(Exception $ex){
 			Log::getInstance('error_log')->write($ex->getMessage());
 		}
-
-
 	else:
 		$conversion_rate = $record['conversion'];
 	endif;
