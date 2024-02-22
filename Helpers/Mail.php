@@ -197,7 +197,7 @@ final class Mail_Helper{
 			$this->mailer->Password   = 'Soporte.010203';
 			//Recipients
 			$this->mailer->setFrom('soporte@mobelinn.com', 'Soporte Mobel Inn');
-		else:
+		elseif($type === 'ventas'):
 			$this->mailer->Username   = 'ventas@mobelinn.com';
 			$this->mailer->Password   = 'Ventas.010203';
 			//Recipients
@@ -209,8 +209,10 @@ final class Mail_Helper{
 			$this->mailer->addBCC('ventas@mobelinn.com', utf8_decode('Alejandro Godínez'));
 		else:
 			$this->mailer->addAddress($customer['email'], utf8_decode($customer['name']));
-			$this->mailer->addBCC('admin@mobelinn.com', utf8_decode('Jose Luis Godínez'));
-			$this->mailer->addBCC('ventas@mobelinn.com', utf8_decode('Alejandro Godínez'));
+			if($type === 'ventas'):
+				//$this->mailer->addBCC('admin@mobelinn.com', utf8_decode('Jose Luis Godínez'));
+				$this->mailer->addBCC('ventas@mobelinn.com', utf8_decode('Alejandro Godínez'));
+			endif;
 		endif;
 
 		//Attachments
