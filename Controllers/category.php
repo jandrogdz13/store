@@ -13,6 +13,7 @@ class categoryController extends mainController{
 
 	public function index(){
 		// template store on index
+
 		$this->viewer->view(__FUNCTION__);
 	}
 
@@ -51,9 +52,15 @@ class categoryController extends mainController{
 			$this->$var_name = $arguments[0];
 		}*/
 
+		$products_related = $product_model->Get_Records();
+
+		$this->viewer->assign('products', $products);
+
+
 		$this->viewer->assign('category', $category);
 		$this->viewer->assign('sub_category', $sub_cat);
 		$this->viewer->assign('products', $products);
+		$this->viewer->assign('products_related', $products_related);
 		$this->viewer->view('index');
 	}
 

@@ -41,7 +41,7 @@ const Checkout_Js = {
 		const self = this;
 		jQuery('.edit-address').on('click', function(){
 			const target = jQuery(this);
-			const address_id = parseInt(target.parent().data('id'));
+			const address_id = parseInt(target.parents('.card').data('id'));
 
 			jQuery('.loader-cart').addClass('show');
 			Util_Js._request({
@@ -164,16 +164,16 @@ const Checkout_Js = {
 	},*/
 
 	select_address: function(){
-		jQuery('#content-addresses').on('click', '.card', function(e){
+		jQuery('#content-addresses').on('click', '.card-body', function(e){
 
 			e.stopPropagation();
 			e.stopImmediatePropagation();
 			let e_target = jQuery(e.target);
-			if(e_target.is('i') && e_target.attr('class').includes('bi-pencil-fill'))
+			if(e_target.is('span') && e_target.attr('class').includes('edit-address'))
 				return false;
 
 			const target = jQuery(this);
-			const address_id = parseInt(target.data('id'));
+			const address_id = parseInt(target.parent().data('id'));
 
 			jQuery('#content-addresses').find('.card').removeClass('active');
 			jQuery(this).addClass('active');
@@ -185,7 +185,7 @@ const Checkout_Js = {
 					address_id
 				}
 			}).then(async function(_json){
-				//console.debug(_json);
+				console.debug(_json);
 				if(_json.success){
 					let zipcode = _json.data.postcode;
 					let suburb = _json.data.suburb;
@@ -219,18 +219,24 @@ const Checkout_Js = {
 				url: 'checkout/addresses'
 			}).then(function(_html){
 				jQuery('#content-addresses').html(_html);
-				self.add_address_account();
-				self.edit_address_account();
+				self.add_address();
+				self.edit_address();
 			});
 		});
 	},
 
 	send_form: function(edit = 0){
 		const self = this;
+
+		jQuery('.btn-save-addr').on('click', function(){
+			jQuery('#AddressForm').submit();
+		});
+
 		jQuery('#AddressForm').on('submit', async function(e){
 			e.preventDefault();
 
 			const requires = [
+				'name',
 				'street',
 				'outdoor_num',
 				'suburb',
@@ -350,7 +356,7 @@ const Checkout_Js = {
 								'<div class="provider d-flex flex-column justify-content-center align-items-start" data-service-code="'+item.service_level_code+'">' +
 								'	<span>'+ item.provider +' <span class="service_level">'+ item.service_level_name +'</span></span>' +
 								'	<span>Entrega estimada '+ item.days +' días</span>' +
-								'	<span>$'+ parseFloat(item.total_pricing) +' '+ item.currency_local +'</span>' +
+								'	<span>$'+ Util_Js._number_format(parseFloat(item.total_pricing)) +' '+ item.currency_local +'</span>' +
 								'</div>' +
 								'</li>');
 							target.append(li);
@@ -385,8 +391,8 @@ const Checkout_Js = {
 			let total_pricing = parseFloat(target.data('total_pricing'));
 			let days = parseInt(target.data('days'));
 
-			let shipping_cost = jQuery('.cart__subtotal-title.shipping_cost .money');
-			let total = jQuery('.cart__subtotal-title.total .money');
+			let shipping_cost = jQuery('.shipping_cost');
+			let total = jQuery('.total-amount-checkout');
 
 			jQuery('.rate').removeClass('selected');
 			jQuery(this).addClass('selected');
@@ -406,6 +412,7 @@ const Checkout_Js = {
 				if(_json.success){
 					jQuery('#rate_id').val(rate_id);
 					Util_Js._counter(shipping_cost, total_pricing);
+					Util_Js._counter(total, parseFloat(_json.data.totals.subtotal_inc_disc) + total_pricing);
 					jQuery('.row.shipping').find('#provider-service').html(provider + ' -- <small>' + service_level_name + '</small>');
 				}else{
 
@@ -471,7 +478,10 @@ const Checkout_Js = {
 							await self.init_mp(_json)
 						}else if(type === 'paypal'){
 							await self.init_paypal(_json);
+						}else{
+							await self.init_transfer();
 						}
+
 						setTimeout(async function(){
 							await parent.addClass("active").find(".answer").slideDown();
 							jQuery('.loader-cart-page').removeClass('show');
@@ -486,6 +496,47 @@ const Checkout_Js = {
 					}
 				});
 			}
+		});
+	},
+
+	init_transfer: function(){
+		jQuery('#cartCheckout').on('click', function(e){
+			e.preventDefault();
+			e.stopPropagation();
+
+			if(!(jQuery('#cartTearm').is(':checked'))){
+				Alert_Js.auto_close({
+					title: 'Términos',
+					text: 'Debes aceptar los términos y condiciones',
+					icon: 'error',
+				});
+				return false;
+			}
+
+			jQuery('.loader-cart-page').addClass('show');
+			Util_Js._request({
+				url: 'checkout/create_order',
+				data: {
+					type: 'transferencia',
+					payment_detail: {
+						'status': 'PENDING',
+						'id': 0
+					}
+				}
+			}).then(function(_json) {
+				console.debug(_json);
+				if(_json.success) {
+					jQuery('.loader-cart-page').removeClass('show');
+					window.location.href = 'checkout/summary/' + _json.data.order_id ;
+				}else {
+					Alert_Js.auto_close({
+						title: _json.title,
+						text: _json.err,
+						icon: 'error',
+					});
+					jQuery('.loader-cart-page').removeClass('show');
+				}
+			});
 		});
 	},
 
@@ -641,7 +692,7 @@ const Checkout_Js = {
 					// This function captures the funds from the transaction.
 					return actions.order.capture().then(function(order_data){
 						jQuery('.loader-cart-page').addClass('show');
-						console.debug(order_data);
+						//console.debug(order_data);
 						// Save order on app
 						if(order_data.status = 'COMPLETED'){
 							Util_Js._request({
@@ -686,7 +737,6 @@ const Checkout_Js = {
 						});
 						return false;
 					}
-					console.debug('Click Paypal');
 				}
 			}).render('#paypal-buttons-container');
 		},1300);

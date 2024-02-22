@@ -11,7 +11,7 @@
 					</div>
 				</div>
 				<div id="cart-title" class="position-relative">
-					<h2 class="text-center p-4">{translate('SIDEBAR_CART_TITLE', 'main')}</h2>
+					<h2 class="text-left p-3">{translate('SIDEBAR_CART_TITLE', 'main')}</h2>
 					<span id="close-cart"><i class="icon icon anm anm-times-l"></i> </span>
 				</div>
 				<div id="content-products">
@@ -19,19 +19,21 @@
 				</div>
 
 				<div class="total {(empty($cart.products))? 'hide': ''} p-4">
-                    {if $cart.totals.discounts gt 0}
+
+                    {if (isset($cart.totals.shipping) And $cart.totals.shipping gt 0) Or $cart.totals.discounts gt 0}
 						<div class="total-in totals__cart__subtotal p-0">
 							<span class="label">{translate('CART_SUBTOTAL', 'main')}:</span>
 							<span class="product-price">
-								<span class="money cart__subtotal h2">${$cart.totals.subtotal|number_format:2}</span>
+								<span class="money">${$cart.totals.subtotal|number_format:2}</span>
 								{translate('CURRENCY', 'main')}
 							</span>
 						</div>
-
+					{/if}
+                    {if $cart.totals.discounts gt 0}
 						<div class="total-in totals__cart__discount p-0">
 							<span class="label">{translate('CART_DISCOUNTS', 'main')}:</span>
 							<span class="product-price">
-								<span class="money cart__subtotal h2">${$cart.totals.discounts|number_format:2}</span>
+								<span class="money">${$cart.totals.discounts|number_format:2}</span>
 								{translate('CURRENCY', 'main')}
 							</span>
 						</div>
@@ -56,12 +58,12 @@
 					<div class="total-in totals__cart__total p-0">
 						<span class="label">{translate('CART_TOTAL', 'main')}:</span>
 						<span class="product-price">
-								<span class="money cart__subtotal h2">${($cart.totals.subtotal_inc_disc)|number_format:2}</span>
+								<span class="money cart__subtotal h2">${($cart.totals.subtotal_inc_disc + $cart.totals.shipping)|number_format:2}</span>
 								{translate('CURRENCY', 'main')}
 							</span>
 					</div>
-					<div class="row-fluid mb-3">
-						<div class="col-12">
+					<div class="row-fluid mb-3 pt-3">
+						<div class="col-12 px-0">
 							<p>{translate('TAXES_SHIPPING_CART', 'main')}</p>
 						</div>
 					</div>
@@ -73,7 +75,7 @@
 			</div>
 			<!--End Minicart Popup-->
 
-			<!--Address Popup-->
+			<!--Account Popup-->
 			<div id="sidebar-account" class="block block-cart">
 				<div class="loader-cart">
 					<div class="loader">
@@ -83,10 +85,10 @@
 					</div>
 				</div>
 				<div id="cart-title" class="position-relative">
-					<h2 class="text-center p-4">{translate('TAB_ORDERS', 'main')}</h2>
+					<h2 class="text-left p-4">{translate('TAB_ORDERS', 'main')}</h2>
 					<span class="close-sidebar"><i class="icon icon anm anm-times-l"></i> </span>
 				</div>
-				<div id="sidebar-content" class="" style="overflow-y: auto; height: calc(100vh - 75px); margin-top: -10px; padding-bottom: 10px;"></div>
+				<div id="sidebar-content" class="" style="overflow-y: auto; height: calc(100vh - 75px); margin-top: 0; padding-bottom: 10px;"></div>
 			</div>
 			<!--End Address Popup-->
 

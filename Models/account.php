@@ -263,7 +263,17 @@ class accountModel extends Model{
 		$record['payment'] = unserialize($record['payment']);
 
 		// Detail
-		$record['detail'] = $this->Get_Detail_Record($order_id);
+		$detail = $this->Get_Detail_Record($order_id);
+		$record['detail'] = $detail;
+
+		$totals = [];
+		foreach($detail as $prod):
+			if(!$prod['is_service'])
+				$totals['subtotal'] += $prod['amount'];
+			else
+				$totals['shipping'] += $prod['amount'];
+		endforeach;
+		$record['totals'] = $totals;
 
 		return $record;
 	}

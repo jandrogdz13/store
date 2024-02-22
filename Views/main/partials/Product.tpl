@@ -53,9 +53,10 @@
 			<span class="price">${$product.unit_price|number_format:2} {translate('CURRENCY', 'main')}</span>
 		</div>
 		<!-- End product price -->
-		<button class="btn btn-addto-cart" type="button" tabindex="{$product@iteration}" data-id="{$product.product_id}" style="width: 100%; padding: 15px">
-			<i class="bi bi-cart mr-2"></i>{translate('ADD_TO_CART', 'main')}
-		</button>
+		{*<button class="btn btn-addto-cart" type="button" tabindex="{$product@iteration}" data-id="{$product.product_id}" style="width: 100%; padding: 15px">
+			<i class="bi bi-cart mr-2"></i>
+			<span>{translate('ADD_TO_CART', 'main')}</span>
+		</button>*}
 	</div>
 	<!-- End product details -->
 </div>

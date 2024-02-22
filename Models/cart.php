@@ -24,6 +24,38 @@ class cartModel extends Model{
 		return $db->fetch();
 	}
 
+	public function Get_Records(string $session_id, int $customer_id){
+		$db = dbPDO::get_instance();
+		$sql = '
+			SELECT
+				store_cart.id,
+				store_cart.session_id,
+				store_cart.product_id,
+				store_cart.customer_id,
+				store_cart.quantity
+			FROM store_cart
+			WHERE store_cart.session_id = :session_id
+				AND store_cart.customer_id = :customer_id
+				AND store_cart.related_to = 0
+		';
+		$db->prepare($sql, [
+			'session_id' => $session_id,
+			'customer_id' => $customer_id
+		]);
+
+		$records = $db->fetchAll();
+		$product_model = Helper::loadModel('product');
+		$products_cart = [];
+		foreach($records as &$record):
+			$product = $product_model->Get_Record($record['product_id']);
+			$record = array_merge($product, $record);
+			$products_cart[$record['product_id']] = $record;
+		endforeach;
+		unset($record);
+
+		return $products_cart;
+	}
+
 	public function Add(array $data): array{
 		$db = dbPDO::get_instance();
 		$cart_id = false;

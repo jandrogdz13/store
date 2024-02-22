@@ -7,7 +7,7 @@ class mainController extends Controller {
 		$this->module = $this->request->getController();
 		$this->model = Helper::loadModel('main');
 
-		$this->init_apis();
+		// Update data Cart
 		$this->totals();
 
 		$this->viewer->assign('module', $this->module);
@@ -24,13 +24,9 @@ class mainController extends Controller {
 
 		try{
 
-			$session_id = session_id();
-			/*if(Session::has('SESSIONID')):
-				$session_id = Session::get('SESSIONID');
-			else:
-				session_regenerate_id(true);
-				$session_id = session_id();
-			endif;*/
+			$session_id = Session::has('SESSIONID')
+				? Session::get('SESSIONID')
+				: session_id();
 
 			$main_model = Helper::loadModel('main');
 
@@ -45,7 +41,9 @@ class mainController extends Controller {
 
 			Session::set('SESSIONID', $session_id);
 
-			$products = $main_model->get_last_cart($record_id, $session_id);
+			$this->totals();
+
+			/*$products = $main_model->get_last_cart($record_id, $session_id);
 			if($products):
 				$cart = [];
 				$product_model = Helper::loadModel('product');
@@ -59,49 +57,68 @@ class mainController extends Controller {
 				Session::set('cart', $cart);
 
 				$this->totals();
-			endif;
+			endif;*/
 		}catch(Exception $e){
 			Throw new Exception($e->getMessage() . ' Trace:' . $e->getTraceAsString());
 		}
 	}
 
 	public function totals($return_json = false){
+
+		// Retrive Data
 		$cart = Session::has('cart')? Session::get('cart'): [];
-		if(!empty($cart)):
-			$totals = [];
-			$totals['shipping'] = isset($cart['shipping'])
-				? $cart['shipping']['total_pricing']
-				: 0;
-			$totals['subtotal'] = 0;
-			$totals['discounts'] = 0;
-			$totals['subtotal_inc_disc'] = 0;
-			$count = 0;
-			if(!empty($cart['products'])):
-				foreach($cart['products'] as $product):
-					$count++;
-					$totals['subtotal'] += $product['quantity'] * $product['unit_price'];
-					$totals['discounts'] += $product['quantity'] * $product['discount_amount'];
-					$totals['subtotal_inc_disc'] += $product['quantity'] * $product['unit_price_inc_discount'];
-				endforeach;
-			endif;
+		$customer = get_customer();
+		$customer_id = !empty($customer)? $customer['id']: 0;
 
-			$cart['totals'] = $totals;
-			$cart['count'] = $count;
+		// Session ID
+		$session_id = session_id();
+		if(!Session::has('SESSIONID'))
+			Session::set('SESSIONID', $session_id);
+		else
+			$session_id = Session::get('SESSIONID');
 
-			$cart['apis'] = Session::get('apis');
-			$cart['session_id'] = Session::get('SESSIONID');
+		// Get Products Cart
+		$cart_model = Helper::loadModel('cart');
+		$products = $cart_model->Get_Records($session_id, $customer_id);
+		$cart['products'] = $products;
 
-			Session::set('cart', $cart);
+		// Cost shipping
+		$totals = [];
+		$totals['shipping'] = isset($cart['shipping'])
+			? $cart['shipping']['total_pricing']
+			: 0;
 
-			if($return_json)
-				$this->viewer->jsonHttpResponse([
-					'data' => Session::get('cart')
-				]);
+		// Calculate Totals
+		$totals['subtotal'] = 0;
+		$totals['discounts'] = 0;
+		$totals['subtotal_inc_disc'] = 0;
+		$count = 0;
+		if(!empty($cart['products'])):
+			foreach($cart['products'] as $product):
+				$count++;
+				$totals['subtotal'] += $product['quantity'] * $product['unit_price'];
+				$totals['discounts'] += $product['quantity'] * $product['discount_amount'];
+				$totals['subtotal_inc_disc'] += $product['quantity'] * $product['unit_price_inc_discount'];
+			endforeach;
 		endif;
+
+		$cart['totals'] = $totals;
+		$cart['count'] = $count;
+
+		$cart['apis'] = $this->init_apis();
+		$cart['session_id'] = Session::get('SESSIONID');
+
+		Session::set('cart', $cart);
+
+		if($return_json)
+			$this->viewer->jsonHttpResponse([
+				'data' => Session::get('cart')
+			]);
+
 	}
 
-	public function init_apis(){
-		$apis = [
+	public function init_apis(): array{
+		return $apis = [
 			'skydropx' => [
 				'SKYDROPX_SANDBOX'=> SKYDROPX_SANDBOX,
 				'SKYDROPX_API_KEY_SANDBOX'=> SKYDROPX_API_KEY_SANDBOX,
@@ -122,7 +139,6 @@ class mainController extends Controller {
 				'MP_TOKEN_PRODUCTION' => MP_TOKEN_PRODUCTION,
 			]
 		];
-		Session::set('apis', $apis);
 	}
 
 	/* Error */

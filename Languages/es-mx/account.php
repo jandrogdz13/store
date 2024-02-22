@@ -14,7 +14,7 @@ $languageStrings = [
 	'LOGIN_SUCCESS' => 'Datos correctos',
 	'MSG_SUCCESS' => 'Cuenta registrada exitosamente',
 	'LOGIN_ALT' => 'Si tiene una cuenta con nosotros, inicie sesión.',
-	'REGISTER_ALT' => 'Ingrese su información a continuación para continuar.<br> Si ya tiene una cuenta, inicie sesión en su lugar.',
+	'REGISTER_ALT' => 'Si ya tiene una cuenta, inicie sesión en su lugar.',
 
 
 	// Errors

@@ -24,10 +24,10 @@ $languageStrings = [
 	'REMOVE_WISHLIST' => 'Quitar de favoritos',
 	'REMOVED_WISHLIST' => '%s Eliminado de favoritos',
 	'ERROR_WISHLIST' => 'Error al %s a favoritos',
-	'CANCEL_BTN' => 'Cancelar captura',
+	'CANCEL_BTN' => 'Cancelar',
 	'LBL_FILTER' => 'Filtrar',
 
-	'SIDEBAR_CART_TITLE' => 'Carrito de compra',
+	'SIDEBAR_CART_TITLE' => 'Carrito',
 	'SIDEBAR_ACCOUNT' => 'Mí cuenta',
 	'BUY_NOW' => 'Entrega inmediata',
 	'CART_SUBTOTAL' => 'Subtotal',
@@ -44,7 +44,7 @@ $languageStrings = [
 	'CURRENCY' => '<small>MXN</small>',
 	'TAXES_SHIPPING_CART' => 'Impuesto incluido. Los gastos de envío se calculan en la pantalla de pago.',
 
-	'ADD_TO_CART' => 'Agregar a carrito',
+	'ADD_TO_CART' => 'Añadir',
 	'ON_SALE' => 'Oferta',
 	'LABEL_NEW' => 'Nuevo',
 	'SHIPPING_AND_RETURNS' => 'Envíos y Devoluciones',

@@ -304,6 +304,7 @@ const Util_Js = {
 			let parent = target.parent();
 			let product_name = parent.find('.pName').text();
 
+			jQuery('.loader-cart').addClass('show');
 			self._request({
 				url: 'cart/remove',
 				data: {
@@ -322,6 +323,7 @@ const Util_Js = {
 						icon: 'success',
 					}).then(function(){
 						self.calculate_totals();
+						jQuery('.loader-cart').removeClass('show');
 					});
 				}else{
 					Alert_Js.auto_close({
@@ -330,6 +332,7 @@ const Util_Js = {
 						progress_bar: true,
 						icon: 'error',
 					});
+					jQuery('.loader-cart').removeClass('show');
 				}
 			});
 
@@ -510,7 +513,7 @@ const Util_Js = {
 							self._counter(discounts, parseFloat(_json.data.totals.discounts));
 							self._counter(subtotal_inc_discount, parseFloat(_json.data.totals.subtotal_inc_disc));
 							self._counter(shipping, parseFloat(_json.data.totals.shipping));
-							self._counter(total, parseFloat(_json.data.totals.subtotal_inc_disc));
+							self._counter(total, parseFloat(_json.data.totals.subtotal_inc_disc) + parseFloat(_json.data.totals.shipping));
 						}, 500);
 					}
 				});
@@ -608,6 +611,23 @@ const Util_Js = {
 		});
 	},
 
+	init_accordion: function(){
+		const self = this;
+		jQuery('.accordion-list > li > .answer').hide();
+		jQuery('.accordion-list h3').on('click', function(){
+			const target = jQuery(this);
+			const parent = target.parent();
+
+			if(parent.hasClass("active")) {
+				parent.removeClass("active").find(".answer").slideUp();
+			} else {
+				jQuery(".accordion-list > li.active .answer").slideUp();
+				jQuery(".accordion-list > li.active").removeClass("active");
+				parent.addClass("active").find(".answer").slideDown();
+			}
+		});
+	},
+
 	// Account
 	open_sidebar: function(){
 		const self = this;
@@ -669,7 +689,7 @@ const Util_Js = {
 		const self = this;
 		jQuery('.edit-address').on('click', function(){
 			const target = jQuery(this);
-			const address_id = parseInt(target.parent().data('id'));
+			const address_id = parseInt(target.parents('.card').data('id'));
 
 			jQuery('.loader-cart').addClass('show');
 			Util_Js._request({
@@ -806,6 +826,12 @@ const Util_Js = {
 
 	send_form_account: function(edit = 0){
 		const self = this;
+
+		jQuery('.btn-save-addr').on('click', function(){
+			jQuery('#AddressForm').submit();
+		});
+
+
 		jQuery('#AddressForm').on('submit', async function(e){
 			e.preventDefault();
 
@@ -975,6 +1001,9 @@ const Util_Js = {
 		// Product
 		this.quick_view();
 		this.add_wishlist();
+
+		if(window.location.href.includes('product'))
+			this.init_accordion();
 
 		// Cart
 		this.add_to_cart();

@@ -19,6 +19,10 @@ class cartController extends mainController {
 
 		//session_regenerate_id(true);
 		$session_id = session_id();
+		if(!Session::has('SESSIONID'))
+			Session::set('SESSIONID', $session_id);
+		else
+			$session_id = Session::get('SESSIONID');
 
 		$post = $this->request->post;
 		$customer = get_customer();
@@ -81,14 +85,14 @@ class cartController extends mainController {
 					'data' => Session::get('cart')
 				]);
 			else:
-				Throw new Exception(translate('ERROR_ADD_DEFAULT', $this->module));
+				Throw new Exception(translate('ERROR_REMOVE_DEFAULT', $this->module));
 			endif;
 
 		}catch(\Throwable $ex) {
 			Log::getInstance('error_log')->write($ex->getMessage());
 			$this->viewer->jsonHttpResponse([
 				'title' => translate('CART_TITLE', $this->module),
-				'err' => translate('ERROR_ADD_DEFAULT', $this->module),
+				'err' => translate('ERROR_REMOVE_DEFAULT', $this->module),
 			], false);
 		}
 	}

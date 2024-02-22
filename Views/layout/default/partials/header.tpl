@@ -89,7 +89,7 @@
 										<li class="" data-lang="en">{translate('LANG_ENGLISH', 'main')}</li>
 									</ul>
 								</div>
-								<p class="phone-no"><i class="anm anm-phone-s"></i> +52 (33) 0000 0000</p>
+								{*<p class="phone-no"><i class="anm anm-phone-s"></i> +52 (33) 0000 0000</p>*}
 							</div>
 							<div class="col-sm-4 col-md-4 col-lg-4 d-none d-lg-none d-md-block d-lg-block">
 								<div class="text-center"><p class="top-header_middle-text">{translate('TOP_BANNER', 'main')}</p></div>

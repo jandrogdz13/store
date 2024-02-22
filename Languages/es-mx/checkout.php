@@ -4,6 +4,7 @@ $languageStrings = [
 	'CHECKOUT_TITLE' => 'Checkout',
 	'SUMMARY_TITLE' => 'Resumen de tú compra',
 	'SIDEBAR_ADDRESSES' => 'Direcciones de entrega',
+	'ENTRY_NAME' => 'Persona que recibe',
 	'ENTRY_STREET' => 'Calle',
 	'ENTRY_INT' => 'Número Int.',
 	'ENTRY_OUT' => 'Exterior',
@@ -13,7 +14,7 @@ $languageStrings = [
 	'ENTRY_STATE' => 'Estado',
 	'ENTRY_POSTCODE' => 'Código postal',
 	'ENTRY_REF' => 'Referencias',
-	'REGISTER_BTN' => 'Guardar dirección de entrega',
+	'REGISTER_BTN' => 'Guardar',
 
 	'ADD_ADDRESS' => 'Agregar dirección',
 	'ADDRESS_SUCCESS' => 'Dirección guardada',
