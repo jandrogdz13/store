@@ -134,9 +134,10 @@ class accountModel extends Model{
 				$d2 = new DateTime(getCurrentDate('Y-m-d H:i:s'));
 				$interval = $d1->diff($d2);
 				$hours = ($interval->days * 24) + $interval->h;
-				if($hours <= 2)
-					return $record['code'];
-
+				if($hours <= 2):
+					$customer['code'] = $record['code'];
+					return $customer;
+				endif;
 			endif;
 
 			$code = uniqid();

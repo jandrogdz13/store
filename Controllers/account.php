@@ -264,7 +264,7 @@ class accountController extends mainController {
 					], false);
 				else
 
-					$customer = $this->model->Get_Last_Code_Forgot($email);
+				$customer = $this->model->Get_Last_Code_Forgot($email);
 				$code = $customer['code'];
 				$url = BASE_URL . "account/reset/{$code}";
 
