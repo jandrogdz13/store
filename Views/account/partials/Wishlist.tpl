@@ -1,7 +1,7 @@
 {if $wishlist}
 	{foreach from=$wishlist item=item}
 		<div class="d-flex justify-content-start position-relative">
-			<img src="{$vars.images}product-images/SILLA-ATENAS-LAT.jpg" class="mr-2" alt="{$item.product_name}" width="50px">
+			<img src="{$vars.images}product-images/img_demo.webp" class="mr-2" alt="{$item.product_name}" width="50px">
 			<div class="d-flex flex-column justify-content-center">
 				<span>{$item.product_name}</span>
 				<span>${$item.unit_price|number_format:2}</span>

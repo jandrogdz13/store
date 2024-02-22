@@ -189,6 +189,7 @@ const Checkout_Js = {
 				if(_json.success){
 					let zipcode = _json.data.postcode;
 					let suburb = _json.data.suburb;
+					jQuery('.address-name').text(_json.data.name);
 					jQuery('#select_address').text('C.P. ' + zipcode + ', ' + suburb);
 					jQuery('#address_id').val(_json.data.addressid);
 					//jQuery('#rates').empty();
@@ -390,6 +391,16 @@ const Checkout_Js = {
 			let service_level_code = target.data('service_level_code');
 			let total_pricing = parseFloat(target.data('total_pricing'));
 			let days = parseInt(target.data('days'));
+			let address_id = parseInt(jQuery('#address_id').val());
+
+			if(!address_id){
+				Alert_Js.auto_close({
+					title: 'Direcciones',
+					text: 'Selecciona una dirección de entrega',
+					icon: 'error',
+				});
+				return false;
+			}
 
 			let shipping_cost = jQuery('.shipping_cost');
 			let total = jQuery('.total-amount-checkout');
@@ -408,7 +419,7 @@ const Checkout_Js = {
 					days
 				}
 			}).then(async function(_json){
-				console.debug(_json);
+				//console.debug(_json);
 				if(_json.success){
 					jQuery('#rate_id').val(rate_id);
 					Util_Js._counter(shipping_cost, total_pricing);
@@ -500,9 +511,10 @@ const Checkout_Js = {
 	},
 
 	init_transfer: function(){
-		jQuery('#cartCheckout').on('click', function(e){
+		jQuery('#cartCheckout').off('click').on('click', function(e){
 			e.preventDefault();
 			e.stopPropagation();
+			e.stopImmediatePropagation();
 
 			if(!(jQuery('#cartTearm').is(':checked'))){
 				Alert_Js.auto_close({

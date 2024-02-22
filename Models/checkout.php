@@ -119,7 +119,7 @@ class checkoutModel extends Model{
 		$sql = "
 			SELECT *
 			FROM `user`
-			WHERE `user`.email = 'tienda@mobelinn.com'
+			WHERE LOWER(`user`.email) = 'tienda@mobelinn.com'
 		";
 		$db->prepare($sql);
 		return $db->fetch();

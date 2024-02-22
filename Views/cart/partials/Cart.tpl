@@ -3,7 +3,7 @@
     {foreach from=$cart.products item=prod_cart}
 		<li class="item position-relative">
 			<a class="product-image" href="#">
-				<img src="{$vars.images}product-images/SILLA-ATENAS-LAT.jpg" alt="{$prod_cart.product_name}" />
+				<img src="{$vars.images}product-images/img_demo.webp" alt="{$prod_cart.product_name}" />
 			</a>
 			<div class="product-details d-flex" data-id="{$prod_cart.product_id}" style="min-height: 90px; ">
 				<a href="javascript:void(0);" class="remove" data-id="{$prod_cart.product_id}">

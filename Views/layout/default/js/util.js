@@ -249,16 +249,26 @@ const Util_Js = {
 			let parent, product_name, quantity = 1;
 
 			if(is_quick_view){
-				quantity = parseInt(jQuery('.product-form__input.qty').val());
+				quantity = parseInt(jQuery('#content_quickview').find('.product-form__input.qty').val());
 				product_name = jQuery('.product-single__title').text();
 			}else{
 				if(window.location.href.includes('product')){
+					quantity = parseInt(jQuery('.product-form__input.qty').val());
 					product_name = jQuery('.product-single__title').text();
 				}else{
 					parent = target.parents('.product-details');
 					product_name = parent.find('.product-name a').text();
 				}
 
+			}
+
+			if(quantity <= 0 || !quantity){
+				Alert_Js.auto_close({
+					title: 'Carrito',
+					text: 'La cantidad debe ser mayor a 0',
+					icon: 'error',
+				});
+				return false;
 			}
 
 			if(product_id > 0){
@@ -349,6 +359,8 @@ const Util_Js = {
 			const product_id = target.data('id');
 			let item = target.parents('tr.cart__row');
 			let product_name = item.find('td .list-view-item__title').text();
+			product_name = product_name.replace('\t','');
+			product_name = product_name.replace('\r','');
 
 			self._request({
 				url: 'cart/remove',
@@ -358,13 +370,12 @@ const Util_Js = {
 					quantity: 1,
 				}
 			}).then(function(json){
-				//console.debug(json);
+				console.debug(json);
 				if(json.success){
 					item.remove();
 					Alert_Js.auto_close({
 						title: json.title,
 						text: json.msg,
-						progress_bar: true,
 						icon: 'success',
 					}).then(function(){
 						if(json.data.products.length <= 0)
@@ -374,7 +385,6 @@ const Util_Js = {
 					Alert_Js.auto_close({
 						title: json.title,
 						text: json.err,
-						progress_bar: true,
 						icon: 'error',
 					});
 				}

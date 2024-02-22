@@ -249,7 +249,7 @@ class checkoutController extends mainController {
 
 				$mail = new Mail_Helper();
 				$template = $mail->order_template($order_id);
-				$mail->send('Hemos recibido tú pedido', $template, $customer);
+				$mail->send('Hemos recibido tú pedido', $template, $customer, 'ventas');
 
 				$this->viewer->jsonHttpResponse([
 					'title' => translate('CHECKOUT_TITLE', $this->module),

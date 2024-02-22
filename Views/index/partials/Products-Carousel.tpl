@@ -21,10 +21,10 @@
 						<!-- start product image -->
 						<a href="product/{$product.keyword}" class="grid-view-item__link">
 							<!-- image -->
-							<img class="primary blur-up lazyload" data-src="{$vars.images}product-images/SILLA-ATENAS-LAT.jpg" src="{$vars.images}product-images/SILLA-ATENAS-LAT.jpg" alt="image" title="product">
+							<img class="primary blur-up lazyload" data-src="{$vars.images}product-images/img_demo.webp" src="{$vars.images}product-images/img_demo.webp" alt="image" title="product">
 							<!-- End image -->
 							<!-- Hover image -->
-							<img class="hover blur-up lazyload" data-src="{$vars.images}product-images/SILLA-ATENAS-ES.webp" src="{$vars.images}product-images/SILLA-ATENAS-ES.webp" alt="image" title="product">
+							<img class="hover blur-up lazyload" data-src="{$vars.images}product-images/img_demo.webp" src="{$vars.images}product-images/img_demo.webp" alt="image" title="product">
 							<!-- End hover image -->
 						</a>
 						<!-- end product image -->
