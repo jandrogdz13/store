@@ -85,7 +85,7 @@
 					</div>
 				</div>
 				<div id="cart-title" class="position-relative">
-					<h2 class="text-left p-4">{translate('TAB_ORDERS', 'main')}</h2>
+					<h2 class="text-left p-3">{translate('TAB_ORDERS', 'main')}</h2>
 					<span class="close-sidebar"><i class="icon icon anm anm-times-l"></i> </span>
 				</div>
 				<div id="sidebar-content" class="" style="overflow-y: auto; height: calc(100vh - 75px); margin-top: 0; padding-bottom: 10px;"></div>

@@ -15,6 +15,7 @@ $languageStrings = [
 	'SEARCH_LABEL' => 'Buscar',
 	'TOP_BANNER' => 'Envíos a toda la república mexicana',
 	'BREADCRUMBS_HOME' => 'Volver a Inicio',
+	'BACK_TO_SOTRE' => 'Ir a tienda',
 
 	'ADD_WISHLIST' => 'Agregar a favoritos',
 	'ADD_ADDRESS' => 'Agregar dirección',

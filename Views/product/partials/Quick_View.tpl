@@ -9,7 +9,7 @@
 			<div class="col-lg-6 col-md-6 col-sm-12 col-12">
 				<div class="product-details-img">
 					<div class="pl-20">
-						<img src="{$vars.images}product-images/SILLA-ATENAS-LAT.jpg" alt="" />
+						<img src="{$vars.images}product-images/img_demo.webp" alt="" />
 					</div>
 				</div>
 			</div>

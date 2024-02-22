@@ -16,32 +16,32 @@
 					<div class="product-details-img">
 						<div class="product-thumb">
 							<div id="gallery" class="product-dec-slider-2 product-tab-left">
-								<a data-image="{$vars.images}product-images/SILLA-ATENAS-LAT.jpg" data-zoom-image="{$vars.images}product-images/SILLA-ATENAS-LAT.jpg" class="slick-slide slick-cloned" data-slick-index="-4" aria-hidden="true" tabindex="-1">
-									<img class="blur-up lazyload" src="{$vars.images}product-images/SILLA-ATENAS-LAT.jpg" alt="" />
+								<a data-image="{$vars.images}product-images/img_demo.webp" data-zoom-image="{$vars.images}product-images/img_demo.webp" class="slick-slide slick-cloned" data-slick-index="-4" aria-hidden="true" tabindex="-1">
+									<img class="blur-up lazyload" src="{$vars.images}product-images/img_demo.webp" alt="" />
 								</a>
-								<a data-image="{$vars.images}product-images/SILLA-ATENAS-ES.webp" data-zoom-image="{$vars.images}product-images/SILLA-ATENAS-ES.webp" class="slick-slide slick-cloned" data-slick-index="-3" aria-hidden="true" tabindex="-1">
-									<img class="blur-up lazyload" src="{$vars.images}product-images/SILLA-ATENAS-ES.webp" alt="" />
+								<a data-image="{$vars.images}product-images/img_demo.webp" data-zoom-image="{$vars.images}product-images/img_demo.webp" class="slick-slide slick-cloned" data-slick-index="-3" aria-hidden="true" tabindex="-1">
+									<img class="blur-up lazyload" src="{$vars.images}product-images/img_demo.webp" alt="" />
 								</a>
-								<a data-image="{$vars.images}product-images/SILLA-ATENAS-ES.webp" data-zoom-image="{$vars.images}product-images/SILLA-ATENAS-ES.webp" class="slick-slide slick-cloned" data-slick-index="-2" aria-hidden="true" tabindex="-1">
-									<img class="blur-up lazyload" src="{$vars.images}product-images/SILLA-ATENAS-ES.webp" alt="" />
+								<a data-image="{$vars.images}product-images/img_demo.webp" data-zoom-image="{$vars.images}product-images/img_demo.webp" class="slick-slide slick-cloned" data-slick-index="-2" aria-hidden="true" tabindex="-1">
+									<img class="blur-up lazyload" src="{$vars.images}product-images/img_demo.webp" alt="" />
 								</a>
-								<a data-image="{$vars.images}product-images/SILLA-ATENAS-ES.webp" data-zoom-image="{$vars.images}product-images/SILLA-ATENAS-ES.webp" class="slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" tabindex="-1">
-									<img class="blur-up lazyload" src="{$vars.images}product-images/SILLA-ATENAS-ES.webp" alt="" />
+								<a data-image="{$vars.images}product-images/img_demo.webp" data-zoom-image="{$vars.images}product-images/img_demo.webp" class="slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" tabindex="-1">
+									<img class="blur-up lazyload" src="{$vars.images}product-images/img_demo.webp" alt="" />
 								</a>
-								<a data-image="{$vars.images}product-images/SILLA-ATENAS-ES.webp" data-zoom-image="{$vars.images}product-images/SILLA-ATENAS-ES.webp" class="slick-slide slick-cloned" data-slick-index="0" aria-hidden="true" tabindex="-1">
-									<img class="blur-up lazyload" src="{$vars.images}product-images/SILLA-ATENAS-ES.webp" alt="" />
+								<a data-image="{$vars.images}product-images/img_demo.webp" data-zoom-image="{$vars.images}product-images/img_demo.webp" class="slick-slide slick-cloned" data-slick-index="0" aria-hidden="true" tabindex="-1">
+									<img class="blur-up lazyload" src="{$vars.images}product-images/img_demo.webp" alt="" />
 								</a>
-								<a data-image="{$vars.images}product-images/SILLA-ATENAS-ES.webp" data-zoom-image="{$vars.images}product-images/SILLA-ATENAS-ES.webp" class="slick-slide slick-cloned" data-slick-index="1" aria-hidden="true" tabindex="-1">
-									<img class="blur-up lazyload" src="{$vars.images}product-images/SILLA-ATENAS-ES.webp" alt="" />
+								<a data-image="{$vars.images}product-images/img_demo.webp" data-zoom-image="{$vars.images}product-images/img_demo.webp" class="slick-slide slick-cloned" data-slick-index="1" aria-hidden="true" tabindex="-1">
+									<img class="blur-up lazyload" src="{$vars.images}product-images/img_demo.webp" alt="" />
 								</a>
-								<a data-image="{$vars.images}product-images/SILLA-ATENAS-ES.webp" data-zoom-image="{$vars.images}product-images/SILLA-ATENAS-ES.webp" class="slick-slide slick-cloned" data-slick-index="2" aria-hidden="true" tabindex="-1">
-									<img class="blur-up lazyload" src="{$vars.images}product-images/SILLA-ATENAS-ES.webp" alt="" />
+								<a data-image="{$vars.images}product-images/img_demo.webp" data-zoom-image="{$vars.images}product-images/img_demo.webp" class="slick-slide slick-cloned" data-slick-index="2" aria-hidden="true" tabindex="-1">
+									<img class="blur-up lazyload" src="{$vars.images}product-images/img_demo.webp" alt="" />
 								</a>
 							</div>
 						</div>
 						<div class="zoompro-wrap product-zoom-right pl-20">
 							<div class="zoompro-span">
-								<img class="zoompro blur-up lazyload" data-zoom-image="{$vars.images}product-images/SILLA-ATENAS-LAT.jpg" alt="" src="{$vars.images}product-images/SILLA-ATENAS-LAT.jpg" />
+								<img class="zoompro blur-up lazyload" data-zoom-image="{$vars.images}product-images/img_demo.webp" alt="" src="{$vars.images}product-images/img_demo.webp" />
 							</div>
 							{if $product.discount gt 0}
 								<div class="product-labels">
@@ -55,13 +55,13 @@
 							</div>
 						</div>
 						<div class="lightboximages">
-							<a href="{$vars.images}product-images/SILLA-ATENAS-ES.webp" data-size="1462x2048"></a>
-							<a href="{$vars.images}product-images/SILLA-ATENAS-ES.webp" data-size="1462x2048"></a>
-							<a href="{$vars.images}product-images/SILLA-ATENAS-ES.webp" data-size="1462x2048"></a>
-							<a href="{$vars.images}product-images/SILLA-ATENAS-ES.webp" data-size="1462x2048"></a>
-							<a href="{$vars.images}product-images/SILLA-ATENAS-ES.webp" data-size="1462x2048"></a>
-							<a href="{$vars.images}product-images/SILLA-ATENAS-ES.webp" data-size="1462x2048"></a>
-							<a href="{$vars.images}product-images/SILLA-ATENAS-ES.webp" data-size="731x1024"></a>
+							<a href="{$vars.images}product-images/img_demo.webp" data-size="1462x2048"></a>
+							<a href="{$vars.images}product-images/img_demo.webp" data-size="1462x2048"></a>
+							<a href="{$vars.images}product-images/img_demo.webp" data-size="1462x2048"></a>
+							<a href="{$vars.images}product-images/img_demo.webp" data-size="1462x2048"></a>
+							<a href="{$vars.images}product-images/img_demo.webp" data-size="1462x2048"></a>
+							<a href="{$vars.images}product-images/img_demo.webp" data-size="1462x2048"></a>
+							<a href="{$vars.images}product-images/img_demo.webp" data-size="731x1024"></a>
 						</div>
 
 					</div>

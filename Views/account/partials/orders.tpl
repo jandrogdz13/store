@@ -49,7 +49,7 @@
 							{if $prod.is_service|boolval}
 								<img src="{$vars.images}delivery-truck.svg" alt="{$prod.product}" width="50px">
 							{else}
-								<img src="{$vars.images}product-images/SILLA-ATENAS-LAT.jpg" alt="{$prod.product}" width="50px">
+								<img src="{$vars.images}product-images/img_demo.webp" alt="{$prod.product}" width="50px">
 							{/if}
 
 							<div class="d-flex flex-column justify-content-center">

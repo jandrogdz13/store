@@ -83,7 +83,7 @@
 										<div class="mini-list-item">
 											<div class="mini-view_image">
 												<a class="grid-view-item__link" href="#">
-													<img class="grid-view-item__image" src="{$vars.images}product-images/SILLA-ATENAS-LAT.jpg" alt="" />
+													<img class="grid-view-item__image" src="{$vars.images}product-images/img_demo.webp" alt="" />
 												</a>
 											</div>
 											<div class="details"> <a class="grid-view-item__title" href="#">Nombre mueblet</a>

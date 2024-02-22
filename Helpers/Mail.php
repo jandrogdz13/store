@@ -12,11 +12,21 @@ final class Mail_Helper{
 	private $footer;
 	private $header;
 	public $files = [];
+	private $icons = [
+		'fb' => '',
+		'inst' => '',
+		'pint' => '',
+	];
 
 	public function __construct(){
 		$this->logo = BASE_URL . 'Views/layout/' . DEFAULT_LAYOUT . '/images/logo_mobel.png';
 		$this->header = file_get_contents(PATH_VIEWS . 'email/partials/header.html');
 		$this->footer = file_get_contents(PATH_VIEWS . 'email/partials/footer.html');
+
+		$this->icons['fb'] = BASE_URL . 'Views/layout/' . DEFAULT_LAYOUT . '/images/socials/facebook-logo-white.png';
+		$this->icons['inst'] = BASE_URL . 'Views/layout/' . DEFAULT_LAYOUT . '/images/socials/instagram-logo-white.png';
+		$this->icons['pint'] = BASE_URL . 'Views/layout/' . DEFAULT_LAYOUT . '/images/socials/pinterest-logo-white.png';
+
 	}
 
 	public function set_files($files){
@@ -38,7 +48,7 @@ final class Mail_Helper{
 				$taxes += ($row['quantity'] * $row['unit_price']) * (16 / 100);
 				$amount += $row['quantity'] * $row['unit_price'];
 
-				$img = BASE_URL . 'Views/layout/' . DEFAULT_LAYOUT . '/images/product-images/SILLA-ATENAS-LAT.jpg';
+				$img = BASE_URL . 'Views/layout/' . DEFAULT_LAYOUT . '/images/product-images/img_demo.webp';
 
 				$product = file_get_contents(PATH_VIEWS . 'email/partials/item.html');
 				$product = str_replace('{{product_image}}', $img, $product);
@@ -54,14 +64,23 @@ final class Mail_Helper{
 		$html = file_get_contents(PATH_VIEWS . 'email/order.html');
 
 		// Header - Footer
+		$mail_img = BASE_URL . 'Views/layout/' . DEFAULT_LAYOUT . '/images/box_1136107.png';
 		$html = str_replace('{{header_mail}}', $this->header, $html);
 		$html = str_replace('{{logo_url}}', $this->logo, $html);
+		$html = str_replace('{{mail_img}}', $mail_img, $html);
 		$html = str_replace('{{footer_mail}}', $this->footer, $html);
+
+		// Icons
+		$html = str_replace('{{fb}}', $this->icons['fb'], $html);
+		$html = str_replace('{{inst}}', $this->icons['inst'], $html);
+		$html = str_replace('{{pint}}', $this->icons['pint'], $html);
+
 
 		$html = str_replace('{{order_id}}', $order['orderid'], $html);
 		$html = str_replace('{{created_date}}', $created_date, $html);
 
 
+		$html = str_replace('{{store_url}}', BASE_URL, $html);
 		$html = str_replace('{{detail_order}}', $order_detail, $html);
 		$html = str_replace('{{subtotal}}', number_format($subtotal, 2), $html);
 		$html = str_replace('{{shipping}}', number_format($order['shipping']['total_pricing'], 2), $html);
@@ -96,6 +115,14 @@ final class Mail_Helper{
 		$html = str_replace('{{logo_url}}', $this->logo, $html);
 		$html = str_replace('{{footer_mail}}', $this->footer, $html);
 
+		$mail_img = BASE_URL . 'Views/layout/' . DEFAULT_LAYOUT . '/images/letter_11055015.png';
+		$html = str_replace('{{mail_img}}', $mail_img, $html);
+
+		// Icons
+		$html = str_replace('{{fb}}', $this->icons['fb'], $html);
+		$html = str_replace('{{inst}}', $this->icons['inst'], $html);
+		$html = str_replace('{{pint}}', $this->icons['pint'], $html);
+
 		return $html;
 	}
 
@@ -106,6 +133,11 @@ final class Mail_Helper{
 		$html = str_replace('{{header_mail}}', $this->header, $html);
 		$html = str_replace('{{logo_url}}', $this->logo, $html);
 		$html = str_replace('{{footer_mail}}', $this->footer, $html);
+
+		// Icons
+		$html = str_replace('{{fb}}', $this->icons['fb'], $html);
+		$html = str_replace('{{inst}}', $this->icons['inst'], $html);
+		$html = str_replace('{{pint}}', $this->icons['pint'], $html);
 
 		$html = str_replace('{{customer_name}}', $customer_name, $html);
 		return $html;
@@ -119,6 +151,15 @@ final class Mail_Helper{
 		$html = str_replace('{{logo_url}}', $this->logo, $html);
 		$html = str_replace('{{footer_mail}}', $this->footer, $html);
 		$html = str_replace('{{url_reset}}', $args['url'], $html);
+
+		$mail_img = BASE_URL . 'Views/layout/' . DEFAULT_LAYOUT . '/images/security.png';
+		$html = str_replace('{{mail_img}}', $mail_img, $html);
+
+		// Icons
+		$html = str_replace('{{fb}}', $this->icons['fb'], $html);
+		$html = str_replace('{{inst}}', $this->icons['inst'], $html);
+		$html = str_replace('{{pint}}', $this->icons['pint'], $html);
+
 		return $html;
 	}
 
@@ -130,10 +171,16 @@ final class Mail_Helper{
 		$html = str_replace('{{logo_url}}', $this->logo, $html);
 		$html = str_replace('{{footer_mail}}', $this->footer, $html);
 		$html = str_replace('{{url_login}}', $args['url'], $html);
+
+		// Icons
+		$html = str_replace('{{fb}}', $this->icons['fb'], $html);
+		$html = str_replace('{{inst}}', $this->icons['inst'], $html);
+		$html = str_replace('{{pint}}', $this->icons['pint'], $html);
+
 		return $html;
 	}
 
-	public function send($subject, $body, $customer){
+	public function send($subject, $body, $customer, $type = 'soporte'){
 		// Mailer
 		$this->mailer = new PHPMailer(true);
 
@@ -143,19 +190,27 @@ final class Mail_Helper{
 		$this->mailer->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 		$this->mailer->Port       = 465;
 		$this->mailer->SMTPAuth   = true;
-		$this->mailer->Username   = 'soporte@mobelinn.com';
-		$this->mailer->Password   = 'Soporte.010203';
 		$this->mailer->Subject 	  = utf8_decode($subject);
 
-		//Recipients
-		$this->mailer->setFrom('soporte@mobelinn.com', 'Mobel Inn Store');
+		if($type === 'soporte'):
+			$this->mailer->Username   = 'soporte@mobelinn.com';
+			$this->mailer->Password   = 'Soporte.010203';
+			//Recipients
+			$this->mailer->setFrom('soporte@mobelinn.com', 'Soporte Mobel Inn');
+		else:
+			$this->mailer->Username   = 'ventas@mobelinn.com';
+			$this->mailer->Password   = 'Ventas.010203';
+			//Recipients
+			$this->mailer->setFrom('ventas@mobelinn.com', 'Tienda Mobel Inn');
+		endif;
 
 		if(defined('SANDBOX') && SANDBOX):
 			$this->mailer->addAddress('soporte@mobelinn.com', utf8_decode('Alejandro Godínez'));
+			$this->mailer->addBCC('ventas@mobelinn.com', utf8_decode('Alejandro Godínez'));
 		else:
 			$this->mailer->addAddress($customer['email'], utf8_decode($customer['name']));
-			$this->mailer->addAddress('admin@mobelinn.com', utf8_decode('Jose Luis Godínez'));
-			$this->mailer->addAddress('ventas@mobelinn.com', utf8_decode('Alejandro Godínez'));
+			$this->mailer->addBCC('admin@mobelinn.com', utf8_decode('Jose Luis Godínez'));
+			$this->mailer->addBCC('ventas@mobelinn.com', utf8_decode('Alejandro Godínez'));
 		endif;
 
 		//Attachments

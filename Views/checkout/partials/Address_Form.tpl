@@ -78,7 +78,7 @@
 	</div>
 </div>
 
-<div class="section-buttons-sidebar">
+<div class="section-buttons-sidebar mt-2">
 	<div class="button-action">
 		<input type="button" class="btn btn-cancel btn-cancel-addr" value="{translate('CANCEL_BTN', 'main')}">
 	</div>

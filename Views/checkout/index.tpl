@@ -1,7 +1,11 @@
 <!--Page Title-->
 <div class="page section-header text-center">
 	<div class="page-title">
-		<div class="wrapper"><h1 class="page-width">{translate('CHECKOUT_TITLE', $module)}</h1></div>
+		<div class="wrapper d-flex justify-content-between align-items-center px-3">
+			<a href="/" title="{translate('BACK_TO_SOTRE', 'main')}"><i class="mr-2 bi bi-arrow-left h1"></i></a>
+			<h1 class="page-width">{translate('CHECKOUT_TITLE', $module)}</h1>
+			<span>&nbsp;</span>
+		</div>
 	</div>
 </div>
 <!--End Page Title-->
@@ -11,74 +15,52 @@
 	<input type="hidden" name="rate_id" id="rate_id" value="{$cart.shipping.rate_id}">
 	<input type="hidden" name="payment_id" id="payment_id" value="{$cart.payment.payment_id}">
 
-	<div class="row mb-2">
-		<div class="col-12">
-			<a href="/">
-				<button class="btn btn--secondary">
-				{translate('BACK_TO_SOTRE', $module)}
-				</button>
-			</a>
-		</div>
-	</div>
 	<div class="row">
 		<div id="checkout-cart" class="col-12 col-sm-12 col-md-7 col-lg-7 main-col">
-			<form action="#" method="post" class="cart style2">
-				<table>
-					<thead class="cart__row cart__header">
-					<tr>
-						<th class="action">&nbsp;</th>
-						<th colspan="2" class="text-center">{translate('TD_PRODUCT', $module)}</th>
-						<th class="text-center">{translate('TD_UP', $module)}</th>
-						<th class="text-center">{translate('TD_QTY', $module)}</th>
-						<th class="text-right">{translate('TD_TOTAL', $module)}</th>
-					</tr>
-					</thead>
-					<tbody>
-					{foreach from=$cart.products item=product}
-						<tr class="cart__row border-bottom line1 cart-flex border-top">
-							<td class="text-center small--hide">
-								<a href="" class="btn btn--secondary cart__remove" data-id="{$product.product_id}">
-									<i class="icon icon anm anm-times-l"></i>
-								</a>
-							</td>
-							<td class="cart__image-wrapper cart-flex-item">
-								<a href="#"><img class="cart__image" src="{$vars.images}product-images/SILLA-ATENAS-LAT.jpg" alt="{$product.product_name}"></a>
-							</td>
-							<td class="cart__meta small--text-left cart-flex-item">
-								<div class="list-view-item__title">
-									<a href="product/{$product.keyword}">{$product.product_name}</a>
+            {foreach from=$cart.products item=product}
+			<div class="d-flex justify-content-start mb-3 position-relative">
+				<div class="cart__image-wrapper mr-3">
+					<img class=" cart__image" src="{$vars.images}product-images/img_demo.webp" alt="{$product.product_name}">
+				</div>
+
+				<div class="name-qty d-flex flex-column justify-content-between w-100">
+					<div>
+						<a class="pName" href="product/{$product.keyword}">{$product.product_name}</a>
+						<div class="variant-cart">Madera parota</div>
+					</div>
+
+					<div class="up-discount d-flex justify-content-between align-items-center">
+
+						<div class="wrapQtyBtn">
+							<div class="qtyField" data-stock="{$product.stock}" data-qv="0">
+								<input type="text" id="Quantity" name="quantity" value="x{$product.quantity}" class="product-form__input qty" disabled style="background-color: #ffffff;">
+							</div>
+						</div>
+
+						<div class="d-flex flex-column">
+							<div class="priceRow">
+								<div class="product-price">
+									<span class="money {($product.discount gt 0)? 'text-decoration-line-through': ''}">${$product.unit_price_inc_discount|number_format:2} {translate('CURRENCY', 'main')}</span>
 								</div>
-							</td>
-							<td class="cart__price-wrapper cart-flex-item">
-								<span class="money">${$product.unit_price_inc_discount|number_format:2}</span>
-							</td>
-							<td class="cart__update-wrapper cart-flex-item text-right">
-								<div class="cart__qty text-center">
-									<div class="qtyField">
-										<input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="{$product.quantity}" pattern="[0-9]*" readonly>
+							</div>
+                            {if $product.discount gt 0}
+								<div class="priceRow">
+									<div class="product-price">
+										<span class="money">${($product.quantity * $product.unit_price_inc_discount)|number_format:2} {translate('CURRENCY', 'main')}</span>
 									</div>
 								</div>
-							</td>
-							<td class="text-right small--hide cart-price">
-								<div><span class="money">${($product.quantity * $product.unit_price_inc_discount)|number_format:2}</span></div>
-							</td>
-						</tr>
-					{/foreach}
-
-					</tbody>
-					{*<tfoot>
-					<tr>
-						<td colspan="3" class="text-left"><a href="http://annimexweb.com/" class="btn--link cart-continue"><i class="icon icon-arrow-circle-left"></i> Continue shopping</a></td>
-						<td colspan="3" class="text-right"><button type="submit" name="update" class="btn--link cart-update"><i class="fa fa-refresh"></i> Update</button></td>
-					</tr>
-					</tfoot>*}
-				</table>
-			</form>
+                            {/if}
+						</div>
+					</div>
+				</div>
+			</div>
+			{/foreach}
 		</div>
 		<div class="col-12 col-sm-12 col-md-5 col-lg-5 cart__footer">
 			<div class="solid-border">
 					<h2><i class="bi bi-truck"></i> {translate('BLOCK_SHIPPING', $module)}</h2>
-					<p class="p-0 mb-0">{$customer.name}</p>
+					<span>Recibe: </span>
+					<span class="p-0 mb-0 address-name">{(!empty($cart.address))? $cart.address.name: $customer.name}</span>
 					<p class="p-0">{translate('SEND_TO', $module)}
 						<a href="" id="select_address" class="text-underline" style="color: #000">
 							{(!empty($cart.address))? "C.P. `$cart.address.postcode`, `$cart.address.suburb`": 'Elije una dirección'}
@@ -111,15 +93,6 @@
 				<h2><i class="bi bi-credit-card"></i> {translate('BLOCK_GATEWAYS', $module)}</h2>
 
                 {*<div class="cart__shipping">Shipping &amp; taxes calculated at checkout</div>*}
-				<p class="cart_tearm">
-					<label>
-						<input type="checkbox" name="tearm" id="cartTearm" class="checkbox" value="tearm" required="">
-                        {translate('TERM_CONDITIONS', 'main')}
-					</label>
-				</p>
-				<button type="submit" name="checkout" id="cartCheckout" class="btn btn-secondary checkout" style="display: none;">Terminar compra</button>
-				<div class="paymnet-img"><img src="{$vars.images}payment-img.jpg" alt="Payment"></div>
-
 				<ul class="accordion-list">
 					<li class="payment_gateway" data-id="spei">
 						<h3>Transferencía directa SPEI</h3>
@@ -164,6 +137,15 @@
 						<span class="money total-amount-checkout h2">${($cart.totals.subtotal_inc_disc + $cart.shipping.total_pricing)|number_format:2}</span>
 					</span>
 				</div>
+
+				<p class="cart_tearm">
+					<label>
+						<input type="checkbox" name="tearm" id="cartTearm" class="checkbox" value="tearm" required="">
+                        {translate('TERM_CONDITIONS', 'main')}
+					</label>
+				</p>
+				<button type="submit" name="checkout" id="cartCheckout" class="btn btn-secondary checkout" style="display: none;">Terminar compra</button>
+				<div class="paymnet-img"><img src="{$vars.images}payment-img.jpg" alt="Payment"></div>
 
 				{*<div class="row shipping mb-2">
 					<span class="col-12 col-sm-6 cart__subtotal-title">
