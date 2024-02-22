@@ -209,6 +209,6 @@
 		<h2 class="text-left p-3">{translate('SIDEBAR_ADDRESSES', $module)}</h2>
 		<span class="close-sidebar"><i class="icon icon anm anm-times-l"></i> </span>
 	</div>
-	<div id="content-addresses" class="container p-3"></div>
+	<div id="content-addresses" class="container px-3 pt-3"></div>
 </div>
 <!--End Address Popup-->
