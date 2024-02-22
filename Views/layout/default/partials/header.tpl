@@ -75,18 +75,18 @@
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-10 col-sm-8 col-md-5 col-lg-4">
-								<div class="currency-picker">
+								{*<div class="currency-picker">
 									<span class="selected-currency">{$currency}</span>
 									<ul id="currencies">
 										<li data-currency="MXN" class="">MXN</li>
 										<li data-currency="USD" class="">USD</li>
 									</ul>
-								</div>
+								</div>*}
 								<div class="language-dropdown">
 									<span class="language-dd">{translate('LANG_SPANISH', 'main')}</span>
 									<ul id="language">
 										<li class="" data-lang="es">{translate('LANG_SPANISH', 'main')}</li>
-										<li class="" data-lang="en">{translate('LANG_ENGLISH', 'main')}</li>
+										<li class="" data-lang="en">{translate('LANG_ENGLISH', 'main')}</li
 									</ul>
 								</div>
 								{*<p class="phone-no"><i class="anm anm-phone-s"></i> +52 (33) 0000 0000</p>*}

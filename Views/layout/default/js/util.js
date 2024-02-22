@@ -606,6 +606,10 @@ const Util_Js = {
 				$.cookie('currency', 'MXN');
 			else
 				$.cookie('currency', 'USD');
+
+			setTimeout(function(){
+				window.location.reload();
+			},1500);
 		});
 	},
 
