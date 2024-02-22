@@ -117,7 +117,7 @@
                         {translate('TERM_CONDITIONS', 'main')}
 					</label>
 				</p>
-				<input type="submit" name="checkout" id="cartCheckout" class="btn btn--small-wide checkout" value="Checkout" style="display: none;">
+				<button type="submit" name="checkout" id="cartCheckout" class="btn btn-secondary checkout" style="display: none;">Terminar compra</button>
 				<div class="paymnet-img"><img src="{$vars.images}payment-img.jpg" alt="Payment"></div>
 
 				<ul class="accordion-list">
@@ -141,27 +141,27 @@
 					</li>
 				</ul>
 
-				<div class="row border-bottom pb-2">
-					<span class="col-12 col-sm-6 cart__subtotal-title">Subtotal</span>
-					<span class="col-12 col-sm-6 text-right"><span class="money">${$cart.totals.subtotal|number_format:2}</span></span>
+				<div class="row pb-2 d-flex justify-content-between flex-nowrap">
+					<span class="col-sm-6 cart__subtotal-title">Subtotal</span>
+					<span class="col-sm-6 text-right"><span class="money">${$cart.totals.subtotal|number_format:2}</span></span>
 				</div>
 				{*<div class="row border-bottom pb-2 pt-2">
 					<span class="col-12 col-sm-6 cart__subtotal-title">Tax</span>
 					<span class="col-12 col-sm-6 text-right">${$cart.totals.taxes|number_format:2}</span>
 				</div>*}
-				<div class="row shipping mb-2">
-					<span class="col-12 col-sm-6 cart__subtotal-title">
+				<div class="row shipping mb-2 d-flex justify-content-between flex-nowrap">
+					<span class="col-sm-6 cart__subtotal-title">
 						{translate('CART_SHIPPING', 'main')}
 						<p id="provider-service">{$cart.shipping.provider} -- <small>{$cart.shipping.service_level_name}</small></p>
 					</span>
-					<span class="col-12 col-sm-6 shipping_cost text-right">
+					<span class="col-sm-6 shipping_cost text-right">
 						${$cart.shipping.total_pricing|number_format:2}
 					</span>
 				</div>
-				<div class="row border-bottom pb-2 pt-2">
-					<span class="col-12 col-sm-6 cart__subtotal-title"><strong>{translate('CART_TOTAL', 'main')}</strong></span>
-					<span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right">
-						<span class="money">${($cart.totals.subtotal_inc_disc + $cart.shipping.total_pricing)|number_format:2}</span>
+				<div class="row pb-2 pt-2 d-flex justify-content-between flex-nowrap">
+					<span class="col-sm-6 cart__subtotal-title"><strong class="h2">{translate('CART_TOTAL', 'main')}</strong></span>
+					<span class="col-sm-6 cart__subtotal-title cart__subtotal text-right">
+						<span class="money total-amount-checkout h2">${($cart.totals.subtotal_inc_disc + $cart.shipping.total_pricing)|number_format:2}</span>
 					</span>
 				</div>
 
@@ -224,9 +224,9 @@
 		</div>
 	</div>
 	<div id="cart-title" class="position-relative">
-		<h2 class="text-center p-4">{translate('SIDEBAR_ADDRESSES', $module)}</h2>
+		<h2 class="text-left p-3">{translate('SIDEBAR_ADDRESSES', $module)}</h2>
 		<span class="close-sidebar"><i class="icon icon anm anm-times-l"></i> </span>
 	</div>
-	<div id="content-addresses" class="container"></div>
+	<div id="content-addresses" class="container p-3"></div>
 </div>
 <!--End Address Popup-->

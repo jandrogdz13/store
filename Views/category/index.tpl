@@ -73,7 +73,7 @@
 				</div>
 				<!--End Color Swatches-->
 				<!--Popular Products-->
-				<div class="sidebar_widget">
+				{*<div class="sidebar_widget">
 					<div class="widget-title"><h2>Lo más top</h2></div>
 					<div class="widget-content">
 						<div class="list list-sidebar-products">
@@ -95,7 +95,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>*}
 				<!--End Popular Products-->
 			</div>
 		</div>
@@ -104,7 +104,9 @@
 		<div class="col-12 col-sm-12 col-md-9 col-lg-10 main-col">
 			<div class="productList">
 				<!--Toolbar-->
-				<button type="button" class="btn btn-filter d-block d-md-none d-lg-none"> Filtros</button>
+				<button type="button" class="btn btn-filter d-block d-md-none d-lg-none">
+					Filtros
+				</button>
 				<div class="toolbar">
 					<div class="filters-toolbar-wrapper">
 						<div class="row">
@@ -223,9 +225,9 @@
 						<div id="tab1" class="tab_content grid-products">
 							<div class="productSlider">
                                 {assign var=index_carousel value="1"}
-                                {for $foo=1 to 10}
-                                    {include file=$vars.config.path_views|cat:'main/partials/Product.tpl'}
-                                {/for}
+                                {foreach from=$products_related item=product}
+                                	{include file=$vars.config.path_views|cat:'main/partials/Product.tpl'}
+                                {/foreach}
 							</div>
 						</div>
 					</div>

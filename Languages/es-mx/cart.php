@@ -12,4 +12,5 @@ $languageStrings = [
 	'ERROR_ADD_TITLE' => 'Agregar carrito',
 	'ERROR_ADD_DEFAULT' => 'No se pudo agregar el producto al carrito',
 	'ERROR_ADD_SHIPPING' => 'No se pudo agregar el método de envío',
+	'ERROR_REMOVE_DEFAULT' => 'No se pudo eliminar el producto del carrito',
 ];

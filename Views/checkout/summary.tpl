@@ -20,7 +20,12 @@
 			</div>*}
 			<div class="row mb-3 mt-5">
 				<h1>¡Gracias por comprar con nosotros! Nos alegra contar con tu confianza.</h1>
-				<h3>Tu orden fue recibida y será procesada muy pronto.</h3>
+                {if $order.payment.type eq 'transferencia'}
+					<h3>Tu orden fue recibida, estaremos pendientes a recibir el comprobante para procesar tu pedido.</h3>
+				{else}
+					<h3>Tu orden fue recibida y será procesada muy pronto.</h3>
+				{/if}
+
 			</div>
 			<div class="row">
 				<h4>A continuación, los detalles de tu compra.</h4>
@@ -39,10 +44,18 @@
 			</div>
 			<div class="row d-flex flex-column mb-3">
 				<p class="mb-0"><strong>Método de pago</strong></p>
-				<p class="ml-2">{$order.payment.type}</p>
+				<p class="ml-2">{$order.payment.type|capitalize}</p>
 			</div>
+
+			{if $order.payment.type eq 'transferencia'}
+				<div class="row d-flex flex-column mb-3">
+					<p class="mb-0"><strong>Instrucciones</strong></p>
+					<p class="ml-2">Datos para la transferencía</p>
+				</div>
+			{/if}
+
 			<div class="row d-flex flex-column mb-3">
-				<p class="mb-0"><strong>No. transacción</strong></p>
+				<p class="mb-0"><strong>No. Transacción</strong></p>
 				<p class="ml-2">{$order.payment.payment_detail.id}</p>
 			</div>
 			<div class="row d-flex flex-column mb-3">
@@ -72,7 +85,7 @@
 			<hr>
 			<div class="row border-bottom pb-2">
 				<span class="col-12 col-sm-6 cart__subtotal-title">Subtotal</span>
-				<span class="col-12 col-sm-6 text-right"><span class="money">${$cart.totals.subtotal|number_format:2}</span></span>
+				<span class="col-12 col-sm-6 text-right"><span class="money">${$order.totals.subtotal|number_format:2}</span></span>
 			</div>
             {*<div class="row border-bottom pb-2 pt-2">
 				<span class="col-12 col-sm-6 cart__subtotal-title">Tax</span>
@@ -81,10 +94,10 @@
 			<div class="row shipping mb-2">
 					<span class="col-12 col-sm-6 cart__subtotal-title">
 						{translate('CART_SHIPPING', 'main')}
-						<p id="provider-service">{$cart.shipping.provider} -- <small>{$cart.shipping.service_level_name}</small></p>
+						<p id="provider-service">{$order.shipping.provider} -- <small>{$order.shipping.service_level_name}</small></p>
 					</span>
 				<span class="col-12 col-sm-6 shipping_cost text-right">
-						${$cart.shipping.total_pricing|number_format:2}
+						${$order.totals.shipping|number_format:2}
 					</span>
 			</div>
 			<hr>
@@ -93,7 +106,7 @@
 					<strong class="h1 font-weight-bold">{translate('CART_TOTAL', 'main')}</strong>
 				</span>
 				<span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right">
-						<span class="money h1 font-weight-bold">${($cart.totals.subtotal_inc_disc + $cart.shipping.total_pricing)|number_format:2} <small>MXN</small></span>
+						<span class="money h1 font-weight-bold">${($order.amount)|number_format:2} <small>MXN</small></span>
 					</span>
 			</div>
 

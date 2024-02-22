@@ -28,9 +28,9 @@
 					</div>
 					<p class="product-single__price product-single__price-product-template">
 						<span class="visually-hidden">{translate('UNIT_PRICE', 'main')}</span>
-						<s id="ComparePrice-product-template">
+						<span id="ComparePrice-product-template">
 							<span class="money {($quick_product.discount gt 0)? 'text-decoration-line-through': ''}">${$quick_product.unit_price|number_format:2}</span>
-						</s>
+						</span>
                         {if $quick_product.discount gt 0}
 						<span class="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
 							<span id="ProductPrice-product-template">

@@ -245,6 +245,8 @@ class checkoutController extends mainController {
 				Session::destroy('cart');
 				Session::destroy('SESSIONID');
 
+				Session::set('create_order', true);
+
 				$mail = new Mail_Helper();
 				$template = $mail->order_template($order_id);
 				$mail->send('Hemos recibido tú pedido', $template, $customer);
@@ -273,8 +275,13 @@ class checkoutController extends mainController {
 	public function summary($order_id){
 		$account_model = Helper::loadModel('account');
 		$order = $account_model->Get_Order($order_id);
-	  	session_regenerate_id(true);
-		Session::set('SESSIONID',  session_id());
+
+		if(Session::has('create_order')):
+			session_regenerate_id(true);
+			Session::set('SESSIONID',  session_id());
+			Session::destroy('create_order');
+		endif;
+
 		//debug($order, true);
 
 		$this->viewer->assign('order', $order);

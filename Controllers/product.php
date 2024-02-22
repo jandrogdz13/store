@@ -20,6 +20,7 @@ class productController extends mainController {
 
 		$p_id = $this->model->Get_Product_Id($product);
 		$product = $this->model->Get_Record($p_id['product_id']);
+		$products = $this->model->Get_Records();
 
 		/*debug([
 			'product' => $product,
@@ -37,6 +38,7 @@ class productController extends mainController {
 		}*/
 
 		$this->viewer->assign('product', $product);
+		$this->viewer->assign('products', $products);
 		$this->viewer->view('index');
 	}
 

@@ -1,13 +1,20 @@
 <!--Image Banners-->
-<div class="section-header text-center mt-5">
-	<div class="custom-title">
-		<h2 class="h2">Explora nuestros catálogos</h2>
-	</div>
-	<p class="alt">Gran variedad en muebles</p>
-</div>
+
 <div class="section imgBanners mb-5">
 	<div class="imgBnrOuter">
 		<div class="container">
+
+			<div class="row">
+				<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="section-header text-center mt-5">
+						<div class="custom-title">
+							<h2 class="h2">Nuestros catálogos</h2>
+						</div>
+						<p class="alt">Gran variedad en muebles</p>
+					</div>
+				</div>
+			</div>
+
 			<div class="row">
 				<div class="col-12 col-sm-12 col-md-12 col-lg-6 pl-0 image-banner-1">
 					<div class="inner topleft">

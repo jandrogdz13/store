@@ -57,9 +57,6 @@ class accountController extends mainController {
 						'err' => translate('ERR_DEFAULT', $this->module),
 					], false);
 
-				// Retrive last cart
-				$this->create_cart($customer['customer_id']);
-
 				// Create session
 				Session::set('authenticated', true);
 				Session::set("timeout", time());
@@ -72,6 +69,9 @@ class accountController extends mainController {
 					'phone' => $customer['phone'],
 					'email' => $customer['email'],
 				]);
+
+				// Retrive last cart
+				$this->create_cart($customer['customer_id']);
 
 				$this->viewer->jsonHttpResponse([
 					'title' => translate('LOGIN_TITLE', $this->module),
@@ -132,9 +132,6 @@ class accountController extends mainController {
 					'err' => translate('ERR_DEFAULT_REG', $this->module),
 				], false);
 
-			// Retrive last cart
-			$this->create_cart($customer['customer_id']);
-
 			// Create session
 			Session::set('authenticated', true);
 			Session::set("timeout", time());
@@ -146,6 +143,9 @@ class accountController extends mainController {
 				'phone' => $customer['phone'],
 				'email' => $customer['email'],
 			]);
+
+			// Retrive last cart
+			$this->create_cart($customer['customer_id']);
 
 			$mail = new Mail_Helper();
 			$template = $mail->register_template($customer['customer_name']);

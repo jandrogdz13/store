@@ -82,7 +82,7 @@
 						<p class="product-single__price product-single__price-product-template">
 							<span class="visually-hidden">{translate('UNIT_PRICE', 'main')}</span>
 							<span id="ComparePrice-product-template">
-								<span class="money {($product.discount gt 0)? 'text-decoration-line-through': ''}">
+								<span class="money {($product.discount gt 0)? 'text-decoration-line-through': ''} h2">
 									${$product.unit_price|number_format:2} {translate('CURRENCY', 'main')}
 								</span>
 							</span>
@@ -172,7 +172,7 @@
 								</div>
 							</div>
 							<div class="product-form__item--submit">
-								<button type="button" name="add" class="btn product-form__cart-submit" data-id="{$product.product_id}">
+								<button type="button" name="add" class="btn btn-secondary product-form__cart-submit" data-id="{$product.product_id}">
 									<span><i class="bi bi-cart mr-2"></i> {translate('ADD_TO_CART', 'main')}</span>
 								</button>
 							</div>
@@ -214,6 +214,38 @@
 						<i class="fa fa-users" aria-hidden="true"></i>
 						<strong class="uersView">14</strong> {translate('USERS_VIEW_PRODUCT', $module)}
 					</div>
+
+					<ul class="accordion-list">
+						<li>
+							<h3>Descripción del mueble</h3>
+							<div class="answer">
+								<p>La combinación exacta entre la tradicional madera parota y un acabado único para una textura suave al tacto y original a la vista.
+									Con un estilo mexicano contemporáneo, nuestros muebles son una elección exclusiva para cualquier hogar.
+								</p>
+							</div>
+						</li>
+						<li>
+							<h3>Medídas del producto</h3>
+							<div class="answer">
+								<p>Medidas</p>
+							</div>
+						</li>
+						<li>
+							<h3>Envíos y tiempos de entrega</h3>
+							<div class="answer">
+								<p>Para calcular tiempos de entrega, primero revisa si el mueble esta listo para entrega inmediata , en dado caso el producto te lo enviaremos en 24 horas, y llegará en no máximo de 3 días hábiles.
+									De no ser así, chatea con un asesor para obtener asesoría sobre tiempos de entrega ya que para cada mueble es diferente, pero van desde los 14 días hasta los 49 días.
+									Enviamos a todo México.</p>
+							</div>
+						</li>
+						<li>
+							<h3>Garantía</h3>
+							<div class="answer">
+								<p>Utilizamos materiales de calidad que duran muchos años. Todos nuestros muebles tienen garantía por defecto de fábrica</p>
+							</div>
+						</li>
+					</ul>
+
 				</div>
 			</div>
 		</div>
@@ -241,52 +273,6 @@
 		</div>
 		<!--End Product Fearure-->
 
-		<!--Product Tabs-->
-		<div class="tabs-listing">
-			<ul class="product-tabs">
-				{*<li rel="tab1"><a class="tablink">Detalle del producto</a></li>*}
-				<li rel="tab4"><a class="tablink">{translate('SHIPPING_AND_RETURNS', 'main')}</a></li>
-			</ul>
-			<div class="tab-container">
-				{*<div id="tab1" class="tab-content">
-					<div class="product-description rte">
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-						<ul>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-							<li>Sed ut perspiciatis unde omnis iste natus error sit</li>
-							<li>Neque porro quisquam est qui dolorem ipsum quia dolor</li>
-							<li>Lorem Ipsum is not simply random text.</li>
-							<li>Free theme updates</li>
-						</ul>
-						<h3>Sed ut perspiciatis unde omnis iste natus error sit voluptatem</h3>
-						<p>You can change the position of any sections such as slider, banner, products, collection and so on by just dragging and dropping.&nbsp;</p>
-						<h3>Lorem Ipsum is not simply random text.</h3>
-						<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</p>
-						<p>Change colors, fonts, banners, megamenus and more. Preview changes are live before saving them.</p>
-						<h3>1914 translation by H. Rackham</h3>
-						<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</p>
-						<h3>Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</h3>
-						<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-						<h3>The standard Lorem Ipsum passage, used since the 1500s</h3>
-						<p>You can use variant style from colors, images or variant images. Also available differnt type of design styles and size.</p>
-						<h3>Lorem Ipsum is not simply random text.</h3>
-						<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</p>
-						<h3>Proin ut lacus eget elit molestie posuere.</h3>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.</p>
-					</div>
-				</div>*}
-
-				<div id="tab4" class="tab-content">
-					<h4>Returns Policy</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eros justo, accumsan non dui sit amet. Phasellus semper volutpat mi sed imperdiet. Ut odio lectus, vulputate non ex non, mattis sollicitudin purus. Mauris consequat justo a enim interdum, in consequat dolor accumsan. Nulla iaculis diam purus, ut vehicula leo efficitur at.</p>
-					<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. In blandit nunc enim, sit amet pharetra erat aliquet ac.</p>
-					<h4>Shipping</h4>
-					<p>Pellentesque ultrices ut sem sit amet lacinia. Sed nisi dui, ultrices ut turpis pulvinar. Sed fringilla ex eget lorem consectetur, consectetur blandit lacus varius. Duis vel scelerisque elit, et vestibulum metus.  Integer sit amet tincidunt tortor. Ut lacinia ullamcorper massa, a fermentum arcu vehicula ut. Ut efficitur faucibus dui Nullam tristique dolor eget turpis consequat varius. Quisque a interdum augue. Nam ut nibh mauris.</p>
-				</div>
-			</div>
-		</div>
-		<!--End Product Tabs-->
-
 		<!--Related Product Slider-->
 		<div class="tab-slider-product section">
 			<div class="container">
@@ -300,9 +286,9 @@
 								<div id="tab1" class="tab_content grid-products">
 									<div class="productSlider">
                                         {assign var=index_carousel value="1"}
-                                        {for $foo=1 to 10}
+                                        {foreach from=$products item=product}
                                             {include file=$vars.config.path_views|cat:'main/partials/Product.tpl'}
-                                        {/for}
+                                        {/foreach}
 									</div>
 								</div>
 							</div>
