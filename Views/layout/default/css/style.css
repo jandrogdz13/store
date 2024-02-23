@@ -1977,6 +1977,13 @@ body{
 }
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: Portrait) {
 	.template-account .logo{ width: 200px; margin-top: -150px; }
+	.grid-products .item .product-image img {
+		min-height: 230px;
+	}
+	.product-details-img .zoompro-span img {
+		min-height: 350px;
+		object-fit: cover;
+	}
 
 }
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: Landscape) {
@@ -2011,6 +2018,7 @@ body{
 	.home4-fullwidth .section-header h2, .home4-fullwidth .section-header .h2 {
 		font-size: 1.29231em;
 	}
+	.section-buttons-sidebar { position: fixed; bottom: 20px;  }
 
 	.alt {
 		line-height: .5em;
@@ -2026,6 +2034,16 @@ body{
 	#header-cart, #checkout-address, #sidebar-account {
 		width: 100%;
 		overflow: auto;;
+	}
+	.product-details-img .zoompro-span img {
+		min-height: 350px;
+	}
+	.product-single .product-single__title {
+		font-size: 1.8rem;
+	}
+
+	.grid-products .item .product-image img {
+		min-height: 250px;
 	}
 
 }
