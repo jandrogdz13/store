@@ -1,5 +1,5 @@
-<div class="container pt-2 h-100 p-0">
-	<div class="row h-100">
+<div class="container pt-2 p-0">
+	<div class="row">
 		<div class="col-12">
 			<form method="post" action="#" id="AddressForm" accept-charset="UTF-8" class="contact-form">
 				<div class="row">
@@ -66,7 +66,7 @@
 							<input type="text" name="postcode" placeholder="{translate('ENTRY_POSTCODE', $module)}" value="{($edit|boolval)? $address.postcode: ''}" id="postcode" class="" data-uitype="numeric" data-rules="require">
 						</div>
 					</div>
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 pb-5">
+					<div class="col-12 col-sm-12 col-md-12 col-lg-12 pb-2">
 						<div class="form-group">
 							<label for="references">{translate('ENTRY_REF', $module)}</label>
 							<textarea name="references" id="references" placeholder="{translate('ENTRY_REF', $module)}" rows="4">{($edit|boolval)? $address.references: ''}</textarea>
@@ -75,5 +75,14 @@
 				</div>
 			</form>
 		</div>
+	</div>
+</div>
+
+<div class="section-buttons-sidebar p-3 ">
+	<div class="button-action">
+		<input type="button" class="btn btn-cancel btn-cancel-addr" value="{translate('CANCEL_BTN', 'main')}">
+	</div>
+	<div class="button-action">
+		<input type="button" class="btn btn-secondary btn-save-addr" value="{translate('REGISTER_BTN', $module)}">
 	</div>
 </div>
