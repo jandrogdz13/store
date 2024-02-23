@@ -88,7 +88,17 @@
 					<h2 class="text-left p-3">{translate('TAB_ORDERS', 'main')}</h2>
 					<span class="close-sidebar"><i class="icon icon anm anm-times-l"></i> </span>
 				</div>
+
 				<div id="sidebar-content" class="" style="overflow-y: auto; height: calc(100% - 150px); margin-top: 0; padding-bottom: 10px;"></div>
+
+				<div class="section-buttons-sidebar p-3 hide">
+					<div class="button-action">
+						<input type="button" class="btn btn-cancel btn-cancel-addr" value="{translate('CANCEL_BTN', 'main')}">
+					</div>
+					<div class="button-action">
+						<input type="button" class="btn btn-secondary btn-save-addr" value="{translate('REGISTER_BTN', 'checkout')}">
+					</div>
+				</div>
 			</div>
 			<!--End Address Popup-->
 

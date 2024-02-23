@@ -77,12 +77,3 @@
 		</div>
 	</div>
 </div>
-
-<div class="section-buttons-sidebar p-3">
-	<div class="button-action">
-		<input type="button" class="btn btn-cancel btn-cancel-addr" value="{translate('CANCEL_BTN', 'main')}">
-	</div>
-	<div class="button-action">
-		<input type="button" class="btn btn-secondary btn-save-addr" value="{translate('REGISTER_BTN', $module)}">
-	</div>
-</div>

@@ -1980,6 +1980,16 @@ body{
 }
 @media (min-width: 481px) and (max-width: 767px) {
 	.template-account .logo{ width: 100px; }
+	.template-account .account-container{ display: unset; }
+	.template-account #img-login {
+		height: 300px;
+		object-fit: cover;
+	}
+	#checkout-cart {
+		position: relative;
+		top: 0;
+		height: auto;
+	}
 }
 
 @media (min-width: 320px) and (max-width: 480px) {

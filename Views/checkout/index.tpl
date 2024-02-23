@@ -209,6 +209,16 @@
 		<h2 class="text-left p-3">{translate('SIDEBAR_ADDRESSES', $module)}</h2>
 		<span class="close-sidebar"><i class="icon icon anm anm-times-l"></i> </span>
 	</div>
+
 	<div id="content-addresses" class="container px-3 pt-3"></div>
+
+	<div class="section-buttons-sidebar p-3 hide">
+		<div class="button-action">
+			<input type="button" class="btn btn-cancel btn-cancel-addr" value="{translate('CANCEL_BTN', 'main')}">
+		</div>
+		<div class="button-action">
+			<input type="button" class="btn btn-secondary btn-save-addr" value="{translate('REGISTER_BTN', $module)}">
+		</div>
+	</div>
 </div>
 <!--End Address Popup-->
