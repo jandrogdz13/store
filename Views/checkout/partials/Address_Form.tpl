@@ -6,13 +6,13 @@
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 						<div class="form-group">
 							<label for="name" class="required">{translate('ENTRY_NAME', $module)}</label>
-							<input type="text" name="name" placeholder="{translate('ENTRY_NAME', $module)}" value="{($edit|boolval)? $address.name: ''}" id="name" autofocus="" data-uitype="text" data-rules="require">
+							<input type="text" name="name" placeholder="{translate('ENTRY_NAME', $module)}" value="{($edit|boolval)? $address.name: ''}" id="name" data-uitype="text" data-rules="require">
 						</div>
 					</div>
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 						<div class="form-group">
 							<label for="street" class="required">{translate('ENTRY_STREET', $module)}</label>
-							<input type="text" name="street" placeholder="{translate('ENTRY_STREET', $module)}" value="{($edit|boolval)? $address.street: ''}" id="street" autofocus="" data-uitype="text" data-rules="require">
+							<input type="text" name="street" placeholder="{translate('ENTRY_STREET', $module)}" value="{($edit|boolval)? $address.street: ''}" id="street" data-uitype="text" data-rules="require">
 						</div>
 					</div>
 					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
