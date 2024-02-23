@@ -695,6 +695,7 @@ const Util_Js = {
 				self.change_country();
 				self.send_form_account();
 				self.cancel_form();
+				jQuery('.section-buttons-sidebar').removeClass('hide');
 			});
 		});
 	},
@@ -743,6 +744,7 @@ const Util_Js = {
 				jQuery('#tab-address .fadein').html(_html);
 				self.add_address_account();
 				self.edit_address_account();
+				jQuery('.section-buttons-sidebar').addClass('hide');
 			});
 		});
 	},
@@ -904,6 +906,7 @@ const Util_Js = {
 							jQuery('#tab-address .fadein').html(_html);
 							self.add_address_account();
 							self.edit_address_account();
+							jQuery('.section-buttons-sidebar').addClass('hide');
 						});
 					});
 				}else{
@@ -1049,3 +1052,5 @@ function googleTranslateElementInit() {
 	a.selectedIndex=1;
 	a.dispatchEvent(new Event('change'));
 }
+
+

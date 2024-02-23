@@ -33,6 +33,7 @@ const Checkout_Js = {
 				Util_Js.change_country();
 				self.cancel_form();
 				self.send_form();
+				jQuery('.section-buttons-sidebar').removeClass('hide');
 			});
 		});
 	},
@@ -222,6 +223,7 @@ const Checkout_Js = {
 				jQuery('#content-addresses').html(_html);
 				self.add_address();
 				self.edit_address();
+				jQuery('.section-buttons-sidebar').addClass('hide');
 			});
 		});
 	},
@@ -297,6 +299,7 @@ const Checkout_Js = {
 							self.add_address();
 							self.edit_address();
 							self.select_address();
+							jQuery('.section-buttons-sidebar').addClass('hide');
 						});
 					});
 				}else{
